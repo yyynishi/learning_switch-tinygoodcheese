@@ -33,14 +33,14 @@ OpenFlow1.3のスイッチの動作の解説
     * learning_switch.rbでは１つのフローテーブルしか存在していなかったが、learning_switch13.rbでは２種類のテーブルが使用されている。以下に各テーブルのエントリの説明を示す。優先度は値が大きいほど高く、先にマッチするかの比較が発生する。
 
 * エントリ０：INGRESS_FILTERING_TABLE
-  概要：フィルタリングを行うためのテーブル
+概要：フィルタリングを行うためのテーブル
     * multicast_mac_drop_flow_entry
 	デフォルトのエントリである。マルチキャストするためのパケットが到着した時に、そのパケットをドロップする。優先度は2。
     * default_forwarding_flow_entry
 	デフォルトのエントリである。全てのパケットがマッチし、次のテーブル(FORWARDING_TABLE)にパケットを渡す。優先度は1。
 
 * エントリ１：FORWARDING_TABLE
-  概要：パケットのフォワーディングを行うためのテーブル
+概要：パケットのフォワーディングを行うためのテーブル
     * forwarding_flow_entry
 	packet_inが発生すると書き込まれるエントリである。パケットの送信元のMACアドレスを記録し、そこに対するパケットを送信するためのエントリである。優先度は2。
     * default_forwarding_flow_entry
