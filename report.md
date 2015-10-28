@@ -60,7 +60,7 @@ multicast_mac_drop_flow_entry(下記１つ目のエントリ)とdefault_forwardi
 
 
 *パケット送信時
-上記の状態からhost2からhost1に対してパケットを送信し、dump-flowした時の出力を以下に示す。上記のエントリに加え、FORWARDING_TABLEに新たなエントリが追加されている。これはpacket_inが発生し、add_forwarding_flow_entryによって、host2のMACアドレスを記録し、host2に対してパケットを送信するためのエントリが書き込まれたことを示している。優先度はフラッディングを行うエントリより高いので、フラディングを行う前に、宛先がhost2かどうか確認するということが分かる。
+上記の状態からhost2からhost1に対してパケットを送信し、dump-flowした時の出力を以下に示す。上記のエントリに加え、FORWARDING_TABLEに新たなエントリが追加されている。これはpacket_inが発生し、add_forwarding_flow_entryによって、host2のMACアドレスを記録し、host2に対してパケットを送信するためのエントリ(下記３つ目のエントリ)が書き込まれたことを示している。優先度はフラッディングを行うエントリより高いので、フラディングを行う前に、宛先がhost2かどうか確認するということが分かる。
 
 	ensyuu2@ensyuu2-VirtualBox:~/Documents/learning_switch-tinygoodcheese$ ./bin/trema send_packets --source host2 --dest host1
 	ensyuu2@ensyuu2-VirtualBox:~/Documents/learning_switch-tinygoodcheese$ sudo ovs-ofctl dump-flows brlsw --protocol=OpenFlow13
